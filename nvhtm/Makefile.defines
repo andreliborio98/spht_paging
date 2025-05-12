@@ -1,0 +1,86 @@
+CPU_MAX_FREQ=$(shell cat CPU_FREQ_kHZ.txt)
+
+# by default vectorial instructions is set
+DEFINES += -mavx 
+DEFINES += -DDEF_CPU_FREQ=$(CPU_MAX_FREQ)
+
+DISABLE_FLAG_IS_IN_TX ?= 1
+DISABLE_PCWM_OPT ?= 0
+DISABLE_FLAG_SNAPSHOT ?= 1
+DISABLE_APROX_WAIT_CLOCK ?= 1
+
+DEBUG_FLAGS := -g
+#DEBUG_FLAGS := -gdb -O0
+
+ifeq ($(PAGING),1)
+DEFINES += -DUSE_PAGING
+endif
+
+ifeq ($(REPLAYER),1)
+DEFINES += -DUSE_REPLAYER
+endif
+
+ifeq ($(HASHMAP),1)
+DEFINES += -DUSE_HASHMAP
+endif
+
+ifeq ($(HASHMAP),2)
+DEFINES += -DUSE_SIMPLEHASH
+endif
+
+ifeq ($(SWAP),1)
+DEFINES += -DUSE_SWAP
+endif
+
+ifeq ($(ASYNC_PAGER),1)
+DEFINES += -DASYNC_PAGER
+endif
+
+ifeq ($(PAGE_INDEX),1)
+DEFINES += -DPAGE_INDEX
+endif
+
+ifeq ($(DEBUG),1)
+DEFINES += $(DEBUG_FLAGS)
+endif
+
+ifeq ($(NDEBUG),1)
+DEFINES += -DNDEBUG
+endif
+
+ifeq ($(NPROFILE),1)
+DEFINES += -DNPROFILE
+endif
+
+ifeq ($(OPTIMIZE),1)
+DEFINES += -DNDEBUG -O3 -g
+endif
+
+ifeq ($(CONCURRENT_CHECKPOINTER),1)
+DEFINES += -DCONCURRENT_CHECKPOINTER
+endif
+
+ifeq ($(DISABLE_FLAG_IS_IN_TX),1)
+DEFINES += -DDISABLE_FLAG_IS_IN_TX
+endif
+
+ifeq ($(DISABLE_PCWM_OPT),1)
+DEFINES += -DDISABLE_PCWM_OPT
+endif
+
+ifeq ($(DISABLE_FLAG_SNAPSHOT),1)
+DEFINES += -DDISABLE_FLAG_SNAPSHOT
+endif
+
+ifeq ($(DISABLE_APROX_WAIT_CLOCK),1)
+DEFINES += -DDISABLE_APROX_WAIT_CLOCK
+endif
+
+####
+# Please point it to the device that will host the persistent heap
+####
+
+DEFINES += -DPM_DIR='"/mnt/nvram"'
+DEFINES += -DNVMALLOC_THREAD_PRIV_FILE='"andre_nvmalloc_file_priv_t"'
+DEFINES += -DNVMALLOC_THREAD_SHAR_FILE='"andre_nvmalloc_file_shar_t"'
+

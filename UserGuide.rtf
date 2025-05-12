@@ -1,0 +1,115 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red255\green255\blue255;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c99985\c0;\cssrgb\c100000\c100000\c99971\c0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww35500\viewh20520\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 SPHT-eADR + Paging USER GUIDE\
+\
+INFO\
+***************\
+#Needs an Intel machine with PM and TSX enabled. Follow the info in the rsync.sh script.\
+\
+There are 3 main benchmarks that can be used to test the main code:\
+\
+	# test_spins\
+ 	 -   Located at /nvhtm\
+ 	 -   Simplistic benchmark for module testing (very granular controls)\
+\
+	# STAMP\
+	  -   Located at /bench/stamp\
+	  -   Original source: "https://github.com/kozyraki/stamp"\
+	  -   "benches_args.sh" has the suggested presets for each benchmark\
+\
+	# TPCC\
+	  -  Located at /bench/tpcc\
+	  -   "benches_args.sh" has the suggested presets for each benchmark\
+\
+\
+\
+USAGE\
+****************\
+###File paths should be altered accordingly at ```src/global_structs.c```\
+\
+\
+	# TEST_SPINS\
+	****************\
+	In order to compile, run ```makeall.sh``` following one of the presets (check \'93# BENCH.SH (STAMP AND TPCC) AND MAKEALL.SH\'94 under \'93EXTRAS\'94 for more details)\
+\
+	#Or simply use the make file in /nvhtm as intended \
+	#There is a ```deps/``` folder with all the dependencies, if not using ```makeall.sh```, compile each first.\
+\
+	As an example, here are some suggested parameters to start running it via cli:\
+	  ```./test_spins EXPERIMENT_TIME=5000000 SPINS_EXEC=0 FLUSH_LAT=0 spinInCycles=1 NB_READS=1 NB_WRITES=1 disableLogChecker=1 FORCE_LEARN=1 tid0Slowdown=0 usePCWM=1 NB_THREADS=1 PINNING=1 PROFILE_FILE="prof_file" ERROR_FILE="error_file" LOG_REPLAY_STATS_FILE="lala3" 	TOTAL_MEMORY=1048576 PERC_SIZE_WORKING_SET=50 ZIPF_ALPHA=70```\
+\
+	# STAMP\
+	****************\
+	  -   Located at /bench/stamp\
+	  -   Original source: "https://github.com/kozyraki/stamp"\
+	  -   It can be executed by running the "bench.sh" script, followed by the configuration code (same as makeall.sh)\
+	  	-   "benches_args.sh" has the suggested presets for each benchmark and which will be used in a bench.sh run, together with its settings applied\
+\
+		## OUTPUT FORMAT\
+		****************\
+			#TODO\
+\
+	# TPCC\
+	****************\
+ 	 -  Located at /bench/tpcc\
+ 	 -  It can be executed by running the "bench.sh" script \
+  	 	-   "benches_args.sh" has the suggested presets for each benchmark and which will be used in a bench.sh run, together with its settings applied\
+\
+		## OUTPUT FORMAT\
+		****************\
+ 		 -  Output files will be created in folders following the n
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+aming scheme, inside a \'93data\'94 folder (this structure is required for post processing (see \'93PROCESS_DATA.SH\'94):\
+\pard\pardeftab720\partightenfactor0
+\cf2 			\'93data\'94 + PRESET + SOL + NUM_WAREHOUSES\
+			- PRESET = bench.sh preset int value (see \'93
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 BENCH.SH (STAMP AND TPCC) AND MAKEALL.SH
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\'94)\
+			- SOL = \cb4 	i.e.:\
+				usePCWM=P\
+				useHTM=H\
+				usePCWMeADRT1=PADRT\cb3 \
+			- NUM_WAREHOUSES = int value set in
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0  "benches_args.sh" \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+EXTRAS\
+****************\
+\
+	# BENCH.SH (STAMP AND TPCC) AND MAKEALL.SH\
+	****************\
+	# Check bench.sh code for the #SETTINGS session, to tweak the necessary parameteres\
+	# bench.sh already uses makeall.sh, no need to compile separately\
+	# If running a workload manually, change nvhtm_params.txt (in bench/stamp or bench/tpcc) accordingly  \
+\
+	Presets:\
+		- [0] Run all presets\
+ 	 	- [1] Replayer enabled, Paging and Hashmap (Paging component) disabled (FAST'21 config with some tweaks)\
+ 	 	- [2] Paging enabled, Replayer and Hashmap disabled\
+ 	 	- [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)\
+ 	 	- [4] Replayer, Paging and Hashmap enabled (Basic Paging functionality)*\
+ 	 	- [5] Replayer, Paging and Swap enabled (Most complete Paging implementation)*\
+ 	 	- [6] Replayer, Paging and Hashmap disabled (Most barebones version, for debug purposes)\
+\
+\
+	# 
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+PROCESS_DATA.SH\
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 	****************\
+	# If using \'93bench.sh\'94, running \'93process_data.sh\'94 will check the structure given by the OUTPUT FORMAT and:\
+		- Calculate average \'93avg\'94 from the number of executions made, and the standard deviation \'93stdev\'94 and save them on the OUTPUT FORMAT folder\
+		- Will also create plots for each workload, and if there are more than one, \'93plot_throughput_multiparams.py\'94 will create plots will all together for ease of comparison\
+		- TPCC EXCLUSIVE:\
+			- Inside \'93Stamp\'94 or \'93TPCC\'94 folders, \'93plot_throughput_mashup.py\'94 will gather all the \'93data*\'94 folders with the data from a single \'93warehouse\'94 value and create a folder \'93mashup$NB_WAREHOUSES\'94, copy the data required with its naming scheme and create the plots inside\
+\
+}

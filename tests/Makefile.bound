@@ -1,0 +1,30 @@
+CC  := gcc
+
+CFLAGS  := -O3 -D_GNU_SOURCE
+#CFLAGS  := -O0 -ggdb -D_GNU_SOURCE
+LDFLAGS := -pthread
+LDFLAGS2 := -pthread -lpmem
+
+TARGET := bt-st bt-nt bt-dram bt-wbinvd bt-allf
+
+SOURCES := boundtest.c
+
+ALL: $(TARGET) 
+
+bt-st: $(SOURCES)
+	  $(CC) $(CFLAGS) -DUSE_FLUSH_PER_STORE $^ -o $@  $(LDFLAGS)
+
+bt-nt: $(SOURCES)
+	  $(CC) $(CFLAGS) -DUSE_NT_STORE $^ -o $@  $(LDFLAGS)
+
+bt-dram: $(SOURCES)
+	  $(CC) $(CFLAGS) -DUSE_DRAM $^ -o $@  $(LDFLAGS)
+
+bt-allf: $(SOURCES)
+	  $(CC) $(CFLAGS) -DBATCH_FLUSH $^ -o $@  $(LDFLAGS)
+
+bt-wbinvd: $(SOURCES)
+	  $(CC) $(CFLAGS) -DUSE_WBINVD $^ -o $@  $(LDFLAGS)
+
+clean:
+	  rm -f $(TARGET) *.o 

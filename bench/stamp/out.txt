@@ -1,0 +1,42 @@
+Creating gene and segments... 
+FLUSH_LAT = 0
+PROFILE_FILE = "./data/profGENOME_usePCWMeADRT1_s1.tsv"
+ERROR_FILE = "./data/errGENOME_usePCWMeADRT1_s1.tsv"
+ABORTS_BEFORE_STOP_SNOOP is set to 0
+PINNING is set to 0 /* 0 = CPU/NUMA/SMT | 1 = CPU/SMT/NUMA | 2 = SMT/CPU/NUMA */
+LOG_REPLAY_STATS_FILE = replay_log_stats
+MALLOC_STATS_FILE = malloc_stats
+NB_REPLAYERS = 0
+usePCWMeADRT1 is set
+DISABLE_LOG_REPLAY is set
+ --- 
+
+FLUSH_LAT = 0
+PROFILE_FILE = "./data/profGENOME_usePCWMeADRT1_s1.tsv"
+ERROR_FILE = "./data/errGENOME_usePCWMeADRT1_s1.tsv"
+ABORTS_BEFORE_STOP_SNOOP is set to 0
+PINNING is set to 0 /* 0 = CPU/NUMA/SMT | 1 = CPU/SMT/NUMA | 2 = SMT/CPU/NUMA */
+LOG_REPLAY_STATS_FILE = replay_log_stats
+MALLOC_STATS_FILE = malloc_stats
+NB_REPLAYERS = 0
+usePCWMeADRT1 is set
+DISABLE_LOG_REPLAY is set
+ --- 
+done.
+Gene length     = 16384
+Segment length  = 64
+Number segments = 16777216
+Sequencing gene... done.
+
+Time = 5.412716
+Sequence matches gene: yes
+Deallocating memory... done.
+stats_nbSuccess: 0 (0.000020%)
+stats_nbAbort: 2489261 (50.000011%)
+	confl: 0 (0.000040%)
+	capac: 0 (0.000040%)
+	expli: 0 (0.000040%)
+	other: 2489261 (100.000000%)
+stats_nbFallback: 2489261 (50.000011%)
+THREADS	TIME	NB_HTM_SUCCESS	NB_FALLBACK	NB_ABORTS	NB_CONFL	NB_CAPAC	NB_EXPLI	NB_OTHER
+48	5.412716	0	2489261	2489261	0	0	0	2489261

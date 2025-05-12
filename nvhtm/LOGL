@@ -1,0 +1,383 @@
+src/spins.cpp
+g++ -g -std=gnu++14 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c++14 -o src/spins.o src/spins.cpp
+src/global_structs.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/global_structs.o src/global_structs.c
+In file included from ./include/htm_impl.h:8,
+                 from src/global_structs.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/global_structs.c:8:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/containers.cpp
+g++ -g -std=gnu++14 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c++14 -o src/containers.o src/containers.cpp
+src/log_checker.cpp
+g++ -g -std=gnu++14 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c++14 -o src/log_checker.o src/log_checker.cpp
+src/impl_log_replayer.cpp
+g++ -g -std=gnu++14 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c++14 -o src/impl_log_replayer.o src/impl_log_replayer.cpp
+src/impl_log_replayer.cpp: In function ‘void fix_next_ptr(int)’:
+src/impl_log_replayer.cpp:426:13: warning: variable ‘maxIdx’ set but not used [-Wunused-but-set-variable]
+  426 |         int maxIdx = 0;
+      |             ^~~~~~
+src/impl_log_replayer.cpp: In function ‘void internal_replay_log_apply(int)’:
+src/impl_log_replayer.cpp:513:12: warning: unused variable ‘isRepeat’ [-Wunused-variable]
+  513 |   uint64_t isRepeat = 0;
+      |            ^~~~~~~~
+src/impl_epoch_impa.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_epoch_impa.o src/impl_epoch_impa.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_epoch_impa.c:24:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_epoch_impa.c:16:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_epoch_impa.c: In function ‘on_after_htm_commit_epoch_impa’:
+./include/impl.h:556:53: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  556 |   int32_t * volatile _slotPtr = (int32_t * volatile)&G_next[_tid].log_ptrs.epoch_next; \
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_epoch_impa.c:167:11: note: in expansion of macro ‘LOOK_UP_FREE_SLOT’
+  167 |   epoch = LOOK_UP_FREE_SLOT(threadId); // updates write_log_next
+      |           ^~~~~~~~~~~~~~~~~
+./include/impl.h:556:53: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  556 |   int32_t * volatile _slotPtr = (int32_t * volatile)&G_next[_tid].log_ptrs.epoch_next; \
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_epoch_impa.c:186:7: note: in expansion of macro ‘LOOK_UP_FREE_SLOT’
+  186 |       LOOK_UP_FREE_SLOT(threadId);
+      |       ^~~~~~~~~~~~~~~~~
+./include/impl.h:556:53: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  556 |   int32_t * volatile _slotPtr = (int32_t * volatile)&G_next[_tid].log_ptrs.epoch_next; \
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_epoch_impa.c:195:7: note: in expansion of macro ‘LOOK_UP_FREE_SLOT’
+  195 |       LOOK_UP_FREE_SLOT(threadId); // makes sure some other guy did not steal in the meanwhile
+      |       ^~~~~~~~~~~~~~~~~
+src/impl_epoch_sync.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_epoch_sync.o src/impl_epoch_sync.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_epoch_sync.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_epoch_sync.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_epoch_static_deadline.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_epoch_static_deadline.o src/impl_epoch_static_deadline.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_epoch_static_deadline.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_epoch_static_deadline.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_upper_bound.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_upper_bound.o src/impl_upper_bound.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_upper_bound.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_upper_bound.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_lc.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_lc.o src/impl_lc.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_lc.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_lc.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pc.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pc.o src/impl_pc.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pc.c:17:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pc.c:9:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_htmOnly.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_htmOnly.o src/impl_htmOnly.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_htmOnly.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_htmOnly.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_htmUndo.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_htmUndo.o src/impl_htmUndo.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_htmUndo.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_htmUndo.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_htmUndo.c: In function ‘state_fprintf_profiling_info_htmUndo’:
+src/impl_htmUndo.c:71:17: warning: too many arguments for format [-Wformat-extra-args]
+   71 |     fprintf(fp, "%i\t%lu\t%lu\t%lu\t%lu\n", gs_appInfo->info.nbThreads,
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_ccHTM.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_ccHTM.o src/impl_ccHTM.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_ccHTM.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_ccHTM.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_PHTM.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_PHTM.o src/impl_PHTM.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_PHTM.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_PHTM.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwc.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwc.o src/impl_pcwc.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwc.c:18:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwc.c:8:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwc.c: In function ‘on_before_htm_begin_pcwc’:
+src/impl_pcwc.c:156:18: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  156 |   myObservedTS = &G_observed_ts[threadId].comm.ts;
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_pcwc.c:157:15: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  157 |   myVersion = &G_observed_ts[threadId].comm.version;
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_crafty.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_crafty.o src/impl_crafty.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_crafty.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_crafty.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_crafty.c: In function ‘on_after_htm_commit_crafty’:
+src/impl_crafty.c:371:22: warning: initialization of ‘uint64_t *’ {aka ‘long unsigned int *’} from ‘uint64_t’ {aka ‘volatile long unsigned int’} makes pointer from integer without a cast [-Wint-conversion]
+  371 |     uint64_t *addr = redoLog[j];
+      |                      ^~~~~~~
+src/impl_pcwc2.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwc2.o src/impl_pcwc2.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwc2.c:11:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwc2.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwc2.c: In function ‘on_before_htm_begin_pcwc2’:
+src/impl_pcwc2.c:140:18: warning: taking address of packed member of ‘struct <anonymous>’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+  140 |   myObservedTS = &G_observed_ts[threadId].comm.ts;
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/impl_pcwm_eadr_smart_close.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr_smart_close.o src/impl_pcwm_eadr_smart_close.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr_smart_close.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr_smart_close.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm_eadr_no_write.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr_no_write.o src/impl_pcwm_eadr_no_write.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr_no_write.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr_no_write.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm_eadr_spin1000.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr_spin1000.o src/impl_pcwm_eadr_spin1000.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr_spin1000.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr_spin1000.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm_eadr_spin100000.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr_spin100000.o src/impl_pcwm_eadr_spin100000.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr_spin100000.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr_spin100000.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm_eadr_flush.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr_flush.o src/impl_pcwm_eadr_flush.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr_flush.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr_flush.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm_eadr.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm_eadr.o src/impl_pcwm_eadr.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm_eadr.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm_eadr.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm.o src/impl_pcwm.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm.c: In function ‘on_after_htm_commit_pcwm’:
+src/impl_pcwm.c:261:1: warning: label ‘putTheMarker’ defined but not used [-Wunused-label]
+  261 | putTheMarker:
+      | ^~~~~~~~~~~~
+src/impl_pcwm2.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm2.o src/impl_pcwm2.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm2.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm2.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm3.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/impl_pcwm3.o src/impl_pcwm3.c
+In file included from ./include/htm_impl.h:8,
+                 from src/impl_pcwm3.c:9:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/impl_pcwm3.c:1:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/impl_pcwm3.c: In function ‘on_after_htm_commit_pcwm3’:
+src/impl_pcwm3.c:348:1: warning: label ‘putTheMarker’ defined but not used [-Wunused-label]
+  348 | putTheMarker:
+      | ^~~~~~~~~~~~
+bench/bench.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o bench/bench.o bench/bench.c
+In file included from ./include/htm_impl.h:8,
+                 from bench/bench.c:10:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from bench/bench.c:9:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+bench/bench.c: In function ‘zipf’:
+bench/bench.c:109:20: warning: right-hand operand of comma expression has no effect [-Wunused-value]
+  109 |   low = 1, high = n, mid;
+      |                    ^
+bench/bench.c: In function ‘bench_no_conflicts_with_reads’:
+bench/bench.c:167:14: warning: unused variable ‘indexb’ [-Wunused-variable]
+  167 |   int index, indexb;
+      |              ^~~~~~
+In file included from ./include/impl.h:10,
+                 from bench/bench.c:9:
+bench/bench.c: In function ‘bench_no_conflicts_with_reads_stm’:
+bench/bench.c:365:13: warning: passing argument 1 of ‘__sigsetjmp’ from incompatible pointer type [-Wincompatible-pointer-types]
+  365 |   sigsetjmp(buf, 0);
+      |             ^~~
+      |             |
+      |             struct __jmp_buf_tag (*)[1]
+/usr/include/setjmp.h:54:46: note: expected ‘struct __jmp_buf_tag *’ but argument is of type ‘struct __jmp_buf_tag (*)[1]’
+   54 | extern int __sigsetjmp (struct __jmp_buf_tag __env[1], int __savemask) __THROWNL;
+      |                         ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+src/main.c
+gcc -g -std=gnu11 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector -c  -mavx  -DDEF_CPU_FREQ=3000000.00 -DDISABLE_FLAG_IS_IN_TX -DDISABLE_FLAG_SNAPSHOT -DDISABLE_APROX_WAIT_CLOCK -I ./include -I ../deps/threading/include -I ../deps/input_handler/include -I ../deps/htm_alg/include -I ../deps/arch_dep/include -I ../deps/tinystm/include -I bench  -fPIC -std=c11 -o src/main.o src/main.c
+In file included from ./include/htm_impl.h:8,
+                 from src/main.c:55:
+../deps/htm_alg/include/htm_retry_template.h:74: warning: "BEFORE_SGL_COMMIT" redefined
+   74 | #define BEFORE_SGL_COMMIT(tid)         /* empty */
+      | 
+In file included from src/main.c:11:
+./include/impl.h:43: note: this is the location of the previous definition
+   43 | #define BEFORE_SGL_COMMIT(tid) \
+      | 
+src/main.c: In function ‘pager_thread_fn’:
+src/main.c:449:1: warning: no return statement in function returning non-void [-Wreturn-type]
+  449 | }
+      | ^
+src/main.c: In function ‘thread_main’:
+src/main.c:485:24: warning: assignment to ‘void *’ from ‘long unsigned int’ makes pointer from integer without a cast [-Wint-conversion]
+  485 |       large_mem_region = HEAP_START_ADDR + (id*(memory_heap_size/nb_thrs));
+      |                        ^
+src/main.c: In function ‘main’:
+src/main.c:1110:10: warning: unused variable ‘a’ [-Wunused-variable]
+ 1110 |     int *a;
+      |          ^
+At top level:
+src/main.c:332:12: warning: ‘rightmostbit’ defined but not used [-Wunused-function]
+  332 | static int rightmostbit(uint64_t b) //page has to be 1
+      |            ^~~~~~~~~~~~
+src/main.c:190:13: warning: ‘print_page_data’ defined but not used [-Wunused-function]
+  190 | static void print_page_data(uint64_t address)
+      |             ^~~~~~~~~~~~~~~
+Linking...
+g++ -g -std=gnu++14 -Wall -mrtm -march=native -fno-strict-aliasing -fno-stack-protector src/spins.o src/global_structs.o src/containers.o src/log_checker.o src/impl_log_replayer.o src/impl_epoch_impa.o src/impl_epoch_sync.o src/impl_epoch_static_deadline.o src/impl_upper_bound.o src/impl_lc.o src/impl_pc.o src/impl_htmOnly.o src/impl_htmUndo.o src/impl_ccHTM.o src/impl_PHTM.o src/impl_pcwc.o src/impl_crafty.o src/impl_pcwc2.o src/impl_pcwm_eadr_smart_close.o src/impl_pcwm_eadr_no_write.o src/impl_pcwm_eadr_spin1000.o src/impl_pcwm_eadr_spin100000.o src/impl_pcwm_eadr_flush.o src/impl_pcwm_eadr.o src/impl_pcwm.o src/impl_pcwm2.o src/impl_pcwm3.o bench/bench.o  src/main.o -L ../deps/input_handler -linput_handler -L ../deps/htm_alg -lhtm_sgl -L ../deps/tinystm/lib -lstm -L ../deps/threading -lthreading -lpthread -o test_spins
+### only if it is a lib compilation
+Building static lib...
+ar rcs libnvhtm.a src/spins.o src/global_structs.o src/containers.o src/log_checker.o src/impl_log_replayer.o src/impl_epoch_impa.o src/impl_epoch_sync.o src/impl_epoch_static_deadline.o src/impl_upper_bound.o src/impl_lc.o src/impl_pc.o src/impl_htmOnly.o src/impl_htmUndo.o src/impl_ccHTM.o src/impl_PHTM.o src/impl_pcwc.o src/impl_crafty.o src/impl_pcwc2.o src/impl_pcwm_eadr_smart_close.o src/impl_pcwm_eadr_no_write.o src/impl_pcwm_eadr_spin1000.o src/impl_pcwm_eadr_spin100000.o src/impl_pcwm_eadr_flush.o src/impl_pcwm_eadr.o src/impl_pcwm.o src/impl_pcwm2.o src/impl_pcwm3.o bench/bench.o 
+### only if it is a lib compilation
+Done!
+# Done

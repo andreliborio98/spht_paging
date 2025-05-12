@@ -1,0 +1,56 @@
+PROBLEM: scanning atomically is too heavy, need to drop some assumption...
+
+
+With 2 threads:
+  33.14%  test_spins  test_spins        [.] state_log_checker_pcwc                                 ▒
+  20.94%  test_spins  test_spins        [.] on_after_htm_commit_pcwc                               ▒
+  17.73%  test_spins  test_spins        [.] state_exec_pcwc                                        ▒
+   6.47%  test_spins  test_spins        [.] computeNewLLC                                          ▒
+   6.28%  test_spins  test_spins        [.] scanTransactions                                       ▒
+   2.81%  test_spins  test_spins        [.] spin_cycles                                            ▒
+   2.42%  test_spins  test_spins        [.] on_before_htm_begin_pcwc                               ▒
+   2.07%  test_spins  test_spins        [.] thread_main                                            ▒
+   1.66%  test_spins  test_spins        [.] fetch_log                                              ▒
+   1.58%  test_spins  test_spins        [.] wait_commit_pcwc                                       ▒
+   1.24%  test_spins  test_spins        [.] on_before_htm_write_8B_pcwc                            ▒
+   0.85%  test_spins  test_spins        [.] on_before_htm_commit_pcwc                              ▒
+   0.59%  test_spins  test_spins        [.] inTxFn                                                 ▒
+   0.42%  test_spins  test_spins        [.] state_commit_pcwc                                      ▒
+   0.26%  test_spins  [unknown]         [k] 0xffffffff9c1918e7                                     ▒
+   0.17%  test_spins  test_spins        [.] HTM_inc_status_count                                   ▒
+
+With 8 threads:
+  32.51%  test_spins  test_spins          [.] scanTransactions
+  16.93%  test_spins  test_spins          [.] computeNewLLC
+  11.64%  test_spins  test_spins          [.] on_after_htm_commit_pcwc
+  11.55%  test_spins  test_spins          [.] wait_commit_pcwc
+  11.07%  test_spins  test_spins          [.] state_log_checker_pcwc
+   8.91%  test_spins  test_spins          [.] state_exec_pcwc
+   2.16%  test_spins  test_spins          [.] thread_main
+   1.04%  test_spins  test_spins          [.] spin_cycles
+   1.02%  test_spins  test_spins          [.] on_before_htm_begin_pcwc
+   0.74%  test_spins  test_spins          [.] fetch_log
+   0.57%  test_spins  test_spins          [.] on_before_htm_write_8B_pcwc
+   0.41%  test_spins  test_spins          [.] on_before_htm_commit_pcwc
+   0.27%  test_spins  test_spins          [.] state_commit_pcwc
+   0.23%  test_spins  test_spins          [.] inTxFn
+   0.15%  test_spins  [unknown]           [k] 0xffffffff9c1918e7
+   0.08%  test_spins  [unknown]           [k] 0xffffffff9b8039a2
+   0.08%  test_spins  test_spins          [.] HTM_inc_status_count
+
+with 14 threads:
+  53.32%  test_spins  test_spins          [.] scanTransactions
+  14.75%  test_spins  test_spins          [.] wait_commit_pcwc
+  10.40%  test_spins  test_spins          [.] computeNewLLC
+   6.66%  test_spins  test_spins          [.] state_log_checker_pcwc
+   6.12%  test_spins  test_spins          [.] on_after_htm_commit_pcwc
+   4.57%  test_spins  test_spins          [.] state_exec_pcwc
+   1.33%  test_spins  test_spins          [.] thread_main
+   1.00%  test_spins  test_spins          [.] on_before_htm_begin_pcwc
+   0.46%  test_spins  test_spins          [.] spin_cycles
+   0.34%  test_spins  test_spins          [.] fetch_log
+   0.24%  test_spins  test_spins          [.] on_before_htm_write_8B_pcwc
+   0.18%  test_spins  test_spins          [.] on_before_htm_commit_pcwc
+   0.13%  test_spins  test_spins          [.] state_commit_pcwc
+   0.09%  test_spins  test_spins          [.] inTxFn
+
