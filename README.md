@@ -1,7 +1,7 @@
-# FAST'21 paper28 SPHT
+# CCPE25 SPHT_paging
 
 The focus is to stress the capabilities of a given strategy to commit a PTM transaction (HTM+PM). In this version, 
-with a paging mechanism add-on.
+with a paging mechanism add-on, capable of working under memory constrained situations.
 
 ## Prerequisites
 
@@ -9,17 +9,19 @@ An Intel machine with TSX enabled. Follow the info in the rsync.sh script.
 
 In order to compile, run ```makeall.sh``` following one of the presets:
   - [1] Replayer enabled, Paging and Hashmap (Paging component) disabled (FAST'21 config with some tweaks)
-  - [2] Paging enabled, Replayer and Hashmap disabled
+  - [2] Paging enabled, Replayer and Hashmap (ImpHash) enabled*
   - [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)
-  - [4] Replayer, Paging and Hashmap enabled (Basic Paging functionality)*
+  - [4] Paging enabled, Replayer and Hashmap (OpenHash) enabled*
   - [5] Replayer, Paging and Swap enabled (Most complete Paging implementation)*
   - [6] Replayer, Paging and Hashmap disabled (Most barebones version, for debug purposes)
+
+* Settings presented in the paper
 
 There is a ```deps/``` folder with all the dependencies, if not using ```makeall.sh```, compile each first.
 
 File paths should be altered at ```src/global_structs.c```
 
-## What the code do
+## What the code can do
 
 Currently there are 5 different implementations for the commit phase:  
   -  [Logical Clock](nvhtm/src/impl_lc.c) - uses a logical clock to serialize transactions in the log (our prototype of DudeTM)  
