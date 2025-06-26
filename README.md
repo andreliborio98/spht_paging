@@ -43,6 +43,7 @@ Currently there are 5 different implementations for the commit phase:
 ## Benchmark usage:
   - File paths should be altered accordingly at ```src/global_structs.c```
   - We also encourage to verify the size of "vm.max_map_count", in our experiments we used it equal to 5000000
+  - STAMP and TPCC have default setting in their respective ```nvhtm_params.txt```
 
 ### Data post process
   -  If using “bench.sh”, running “process_data.sh” will check the structure given by the OUTPUT FORMAT and:
