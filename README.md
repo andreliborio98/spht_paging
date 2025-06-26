@@ -14,7 +14,7 @@ In order to compile, run ```makeall.sh``` following one of the presets:
   - [2] Paging enabled, Replayer and Hashmap (ImpHash) enabled*
   - [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)
   - [4] Paging enabled, Replayer and Hashmap (OpenHash) enabled*
-  - [5] Replayer, Paging and Swap enabled (Most complete Paging implementation)*
+  - [5] Replayer, Paging and Swap enabled*
   - [6] Replayer, Paging and Hashmap disabled (Most barebones version, for debug purposes)
 
 * Settings presented in the paper
