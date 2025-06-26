@@ -32,12 +32,9 @@ There are 3 main benchmarks that can be used to test the main code:\
 \
 USAGE\
 ****************\
-###File paths should be altered accordingly at ```src/global_structs.c```\
-
-###Notes:
-	We also encourage to verify the size of "vm.max_map_count", in our experiments we used it equal to 5000000.
-	Note that the post processing scripts require perfect data files, if not, no output is produced for that configuration.
-\
+### File paths should be altered accordingly at ```src/global_structs.c```\
+	Notes:		\
+		We also encourage to verify the size of "vm.max_map_count", in our experiments we used it equal to 5000000.		Note that the post processing scripts require perfect data files, if not, no output is produced for that configuration.\
 \
 	# TEST_SPINS\
 	****************\
@@ -61,10 +58,8 @@ USAGE\
  	 -  Located at /bench/tpcc\
  	 -  It can be executed by running the "bench.sh" script \
   	 	-   "benches_args.sh" has the suggested presets for each benchmark and which will be used in a bench.sh run, together with its settings applied\
-	 - "finalscript.sh" was a late automation, allowing the whole test suite to run with a single command. 
-		-   "finalscript_benches_argsB1.sh" and "finalscript_benches_argsB2.sh" have the arguments for each experiment batch, those being, light-focus and heavy-focus workloads, respectively.
-		-   The results can be processed by running "process_finalscript.sh"
-\
+	 - "finalscript.sh" was a late automation, allowing the whole test suite to run with a single command. 		-   "finalscript_benches_argsB1.sh" and "finalscript_benches_argsB2.sh" have the arguments for each experiment batch, those being, light-focus and heavy-focus workloads, respectively.		-   The results can be processed by running "process_finalscript.sh"\
+		\
 		## OUTPUT FORMAT\
 		****************\
  		 -  Output files will be created in folders following the n
