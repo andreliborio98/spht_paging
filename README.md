@@ -3,6 +3,8 @@
 The focus is to stress the capabilities of a given strategy to commit a PTM transaction (HTM+PM). In this version, 
 with a paging mechanism add-on, capable of working under memory constrained situations.
 
+# User guide can be found at 
+
 ## Prerequisites
 
 An Intel machine with TSX enabled. Follow the info in the rsync.sh script.
@@ -39,6 +41,8 @@ Currently there are 5 different implementations for the commit phase:
   -  [Physical+Logical](nvhtm/src/impl_pcwc.c) - WIP, the idea is to devise the logical clock from existing information, without having it actually mantaining it  
 
 ## Benchmark usage:
+  - In detail usage information can be found at '''UserGuide.rtf'''
+
 ### test_spins
   -   Located at /nvhtm
   -   Simplistic benchmark for module testing
