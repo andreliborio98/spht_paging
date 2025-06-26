@@ -3,18 +3,18 @@
 The focus is to stress the capabilities of a given strategy to commit a PTM transaction (HTM+PM). In this version, 
 with a paging mechanism add-on, capable of working under memory constrained situations.
 
-# User guide can be found at 
+### User guide can be found at ```UserGuide.rtf```
 
 ## Prerequisites
 
-An Intel machine with TSX enabled. Follow the info in the rsync.sh script.
+An Intel machine with TSX enabled. Follow the info in the ```rsync.sh``` script.
 
 In order to compile, run ```makeall.sh``` following one of the presets:
   - [1] Replayer enabled, Paging and Hashmap (Paging component) disabled (FAST'21 config with some tweaks)
   - [2] Paging enabled, Replayer and Hashmap (ImpHash) enabled*
   - [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)
   - [4] Paging enabled, Replayer and Hashmap (OpenHash) enabled*
-  - [5] Replayer, Paging and Swap enabled (Most complete Paging implementation)*
+  - [5] Replayer, Paging and Swap enabled*
   - [6] Replayer, Paging and Hashmap disabled (Most barebones version, for debug purposes)
 
 * Settings presented in the paper
@@ -44,18 +44,18 @@ Currently there are 5 different implementations for the commit phase:
   - In detail usage information can be found at '''UserGuide.rtf'''
 
 ### test_spins
-  -   Located at /nvhtm
+  -   Located at ```/nvhtm```
   -   Simplistic benchmark for module testing
   -   Can be run by running a command line like the one below:
   ```./test_spins EXPERIMENT_TIME=5000000 SPINS_EXEC=0 FLUSH_LAT=0 spinInCycles=1 NB_READS=1 NB_WRITES=1 disableLogChecker=1 FORCE_LEARN=1 tid0Slowdown=0 usePCWM=1 NB_THREADS=1 PINNING=1 PROFILE_FILE="prof_file" ERROR_FILE="error_file" LOG_REPLAY_STATS_FILE="lala3" TOTAL_MEMORY=1048576 PERC_SIZE_WORKING_SET=50 ZIPF_ALPHA=70```
 
 ### STAMP
-  -   Located at /bench/stamp
+  -   Located at ```/bench/stamp```
   -   Original source: "https://github.com/kozyraki/stamp"
-  -   It can be executed by running the "bench.sh" script, followed by the configuration code (same as makeall.sh)
+  -   It can be executed by running the ```bench.sh``` script, followed by the configuration code (same as makeall.sh)
     -   "benches_args.sh" has the suggested presets for each benchmark
 
 ### TPCC
-  -  Located at /bench/tpcc
-  -  It can be executed by running the "bench.sh" script 
-    -   "benches_args.sh" has the suggested presets for each benchmark
+  -  Located at ```/bench/tpcc```
+  -  It can be executed by running the ```bench.sh``` script 
+    -   ```benches_args.sh``` has the suggested presets for each benchmark
