@@ -11,7 +11,7 @@
     #6=all off
 
 setting=4 #default
-ASYNC_PAGER=1
+ASYNC_PAGER=0
 PAGE_INDEX=1
 ####################
 
@@ -35,10 +35,10 @@ for (( compilation=$start; compilation<=$end; compilation++ ))
 do
     case $compilation in
         1) run="REPLAYER=1 PAGING=0 HASHMAP=0 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;;
-        2) run="REPLAYER=1 PAGING=1 HASHMAP=2 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;; #simplehash
+        2) run="REPLAYER=1 PAGING=1 HASHMAP=2 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;; #hashimp
         3) run="REPLAYER=1 PAGING=1 HASHMAP=0 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;;
-        4) run="REPLAYER=1 PAGING=1 HASHMAP=1 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;;
-        5) run="REPLAYER=1 PAGING=1 SWAP=1 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;;
+        4) run="REPLAYER=1 PAGING=1 HASHMAP=1 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;; #openhash
+        5) run="REPLAYER=1 PAGING=1 SWAP=1 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;; #swap
         6) run="REPLAYER=0 PAGING=0 HASHMAP=0 ASYNC_PAGER=${ASYNC_PAGER} PAGE_INDEX=${PAGE_INDEX}" ;; #has to be last
     esac
     #2, 3, 4, 5 == #PAGING=1
@@ -216,4 +216,4 @@ echo "Check PM location:"
 mount | grep ext4
 echo ""
 echo "Verify if command has been executed:" 
-echo "sudo sysctl -w vm.max_map_count=500000(0)"
+echo "sudo sysctl -w vm.max_map_count=5000000"
