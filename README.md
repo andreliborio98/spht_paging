@@ -3,7 +3,7 @@
 The focus is to stress the capabilities of a given strategy to commit a PTM transaction (HTM+PM). In this version, 
 with a paging mechanism add-on, capable of working under memory constrained situations.
 
-## User guide can be found at UserGuide.rtf
+### User guide can be found at UserGuide.rtf
 
 ## Prerequisites
 
