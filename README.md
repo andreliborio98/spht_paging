@@ -9,7 +9,7 @@ with a paging mechanism add-on, capable of working under memory constrained situ
 
 An Intel machine with TSX enabled. Follow the info in the ```rsync.sh``` script.
 
-In order to compile, run ```makeall.sh``` following one of the PRESETS:
+In order to compile, run ```makeall.sh``` and run experiments (STAMP and TPCC), follow one of the PRESETS:
   - [1] Replayer enabled, Paging and Hashmap (Paging component) disabled (FAST'21 config with some tweaks)
   - [2] Paging enabled, Replayer and Hashmap (ImpHash) enabled*
   - [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)
