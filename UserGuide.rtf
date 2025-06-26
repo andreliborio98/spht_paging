@@ -1,4 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2821
+{\rtf1\ansi\ansicpg1252\cocoartf2822
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red255\green255\blue255;
 }
@@ -26,7 +26,7 @@ There are 3 main benchmarks that can be used to test the main code:\
 \
 	# TPCC\
 	  -  Located at /bench/tpcc\
-	  -   "benches_args.sh" has the suggested presets for each benchmark\
+	  -  "benches_args.sh" has the suggested presets for each benchmark\
 \
 \
 \
@@ -51,10 +51,6 @@ USAGE\
 	  -   Original source: "https://github.com/kozyraki/stamp"\
 	  -   It can be executed by running the "bench.sh" script, followed by the configuration code (same as makeall.sh)\
 	  	-   "benches_args.sh" has the suggested presets for each benchmark and which will be used in a bench.sh run, together with its settings applied\
-\
-		## OUTPUT FORMAT\
-		****************\
-			#TODO\
 \
 	# TPCC\
 	****************\
@@ -87,17 +83,17 @@ EXTRAS\
 \
 	# BENCH.SH (STAMP AND TPCC) AND MAKEALL.SH\
 	****************\
-	# Check bench.sh code for the #SETTINGS session, to tweak the necessary parameteres\
+	# Check bench.sh code for the #SETTINGS session, to tweak the necessary parameters\
 	# bench.sh already uses makeall.sh, no need to compile separately\
 	# If running a workload manually, change nvhtm_params.txt (in bench/stamp or bench/tpcc) accordingly  \
 \
 	Presets:\
 		- [0] Run all presets\
  	 	- [1] Replayer enabled, Paging and Hashmap (Paging component) disabled (FAST'21 config with some tweaks)\
- 	 	- [2] Paging enabled, Replayer and Hashmap disabled\
+ 	 	- [2] Replayer, Paging and Hashmap enabled (ImpHash)*\
  	 	- [3] Replayer and Paging enabled, Hashmap disabled (Used to check main Paging logic overhead)\
- 	 	- [4] Replayer, Paging and Hashmap enabled (Basic Paging functionality)*\
- 	 	- [5] Replayer, Paging and Swap enabled (Most complete Paging implementation)*\
+ 	 	- [4] Replayer, Paging and Hashmap enabled (OpenHash)*\
+ 	 	- [5] Replayer, Paging and Swap enabled*\
  	 	- [6] Replayer, Paging and Hashmap disabled (Most barebones version, for debug purposes)\
 \
 \
@@ -111,5 +107,4 @@ PROCESS_DATA.SH\
 		- Will also create plots for each workload, and if there are more than one, \'93plot_throughput_multiparams.py\'94 will create plots will all together for ease of comparison\
 		- TPCC EXCLUSIVE:\
 			- Inside \'93Stamp\'94 or \'93TPCC\'94 folders, \'93plot_throughput_mashup.py\'94 will gather all the \'93data*\'94 folders with the data from a single \'93warehouse\'94 value and create a folder \'93mashup$NB_WAREHOUSES\'94, copy the data required with its naming scheme and create the plots inside\
-\
 }
